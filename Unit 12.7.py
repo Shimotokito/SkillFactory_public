@@ -6,6 +6,5 @@ bank_1 = round(per_cent_list[0] * money / 100)
 bank_2 = round(per_cent_list[1] * money / 100)
 bank_3 = round(per_cent_list[2] * money / 100)
 bank_4 = round(per_cent_list[3] * money / 100)
-deposites = [bank_1, bank_2, bank_3, bank_4]
-deposit = max(deposites)
-print(deposit)
+deposit = max([bank_1, bank_2, bank_3, bank_4])
+print(f"Максимальная сумма, которую вы можете заработать — {deposit}")
