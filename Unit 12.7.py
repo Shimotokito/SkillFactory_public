@@ -8,4 +8,4 @@ bank_3 = round(per_cent_list[2] * money / 100)
 bank_4 = round(per_cent_list[3] * money / 100)
 deposites = [bank_1, bank_2, bank_3, bank_4]
 deposit = max(deposites)
-print(type(deposit))
+print(deposit)
