@@ -1,0 +1,48 @@
+input_1 = list(map(int, input("Ввведите последовательность чисел через пробел: ").split()))
+input_2 = int(input("Введите искомое число: "))
+
+while input_2:
+    if input_2 < min(input_1):
+        print("Введенное число меньше минимального из введенного массива")
+        input_2 = int(input("Введите искомое число: "))
+
+    elif input_2 > max(input_1):
+        print("Введенное число больше максимального из введенного массива")
+        input_2 = int(input("Введите искомое число: "))
+
+    else:
+        break
+
+
+def sort_array(array):
+    for i in range(len(array)):  # проходим по всему массиву
+        idx_min = i  # сохраняем индекс предположительно минимального элемента
+        for j in range(i, len(array)):
+            if array[j] < array[idx_min]:
+                idx_min = j
+        if i != idx_min:  # если индекс не совпадает с минимальным, меняем
+            array[i], array[idx_min] = array[idx_min], array[i]
+
+    print(f"Отсортированный массив: {array}")
+    return array
+
+
+def binary_search(array, element, left, right):
+    if left > right:  # если левая граница превысила правую,
+        return False  # значит элемент отсутствует
+
+    middle = (right + left) // 2  # находимо середину
+
+    if array[middle] == element:  # если элемент в середине,
+        return middle - 1 if middle > 0 else 0  # если искомый элемент находится в начале сортированного списка, то вернем 0 индекс
+
+
+    elif element < array[middle]:  # если элемент меньше элемента в середине
+        # рекурсивно ищем в левой половине
+        return binary_search(array, element, left, middle - 1)
+
+    else:  # иначе в правой
+        return binary_search(array, element, middle + 1, right)
+
+
+print(f"Индекс предыдущего эелемента от искомого: {binary_search(sort_array(input_1), input_2, 0, len(input_1) - 1)}")
